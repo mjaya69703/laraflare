@@ -5,6 +5,34 @@
 @section('content')
 <div class="py-10">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @if(empty(env('CLOUDFLARE_API_TOKEN')))
+        <!-- API Token Not Set Warning -->
+        <div class="rounded-2xl bg-yellow-50 p-6 mb-8">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-8 w-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-lg font-medium text-yellow-800">Cloudflare API Token Required</h3>
+                    <div class="mt-2">
+                        <p class="text-yellow-700">Please set your Cloudflare API token in the .env file:</p>
+                        <div class="mt-3 bg-yellow-100 rounded-lg p-4 font-mono text-sm">
+                            CLOUDFLARE_API_TOKEN=your_api_token_here
+                        </div>
+                        <p class="mt-3 text-sm text-yellow-700">
+                            You can generate an API token from your 
+                            <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" class="font-medium underline hover:text-yellow-800">
+                                Cloudflare dashboard
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
         <!-- Header with Stats -->
         <div class="bg-white rounded-2xl shadow-sm overflow-hidden mb-8">
             <div class="px-8 py-6">
